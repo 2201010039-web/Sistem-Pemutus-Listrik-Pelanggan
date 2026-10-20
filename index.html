@@ -268,6 +268,9 @@
         }
 
         .upload-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
             background: white;
             padding: 10px;
             border-radius: var(--border-radius);
@@ -285,6 +288,7 @@
 
         .upload-wrapper input[type="file"] { display: none; }
         .upload-wrapper label {
+            width: 100%;
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -447,7 +451,8 @@
                     </button>
                     <button class="btn btn-danger" onclick="kosongkanData()">
                         <span class="material-icons-round" style="font-size: 14px;">delete_sweep</span> Kosongkan Data
-              
+                    </button>
+                </div>
             </div>
 
             <div class="upload-wrapper">
@@ -817,9 +822,7 @@
                     simpanKeStorage(); renderTabelData(); updateDashboardState();
                     const ok = await simpanPelangganFirebase();
                     alert(ok ? 'Berhasil! '+dataBaru.length+' data pelanggan berhasil diunggah dan disimpan ke Firebase.' : 'Data tampil, tetapi gagal disimpan ke Firebase. Periksa Firebase Rules.');
-
-
-                event.target.value='';
+                    event.target.value='';
                 } catch(err) { console.error('Excel:',err); alert('Gagal membaca berkas Excel. Pastikan format .xlsx/.xls dan kolom ID Pelanggan, Nama, serta Alamat tersedia.'); }
             };
             reader.onerror=()=>alert('Gagal membaca berkas Excel dari komputer.');
